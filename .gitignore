@@ -1,0 +1,25 @@
+# Gradle cache (auto-generated)
+.gradle/
+build/
+**/build/
+gradle-app.setting
+.gradletasknamecache
+
+# Local environment (machine-specific)
+local.properties
+
+# Android Studio (machine-specific)
+.idea/
+*.iml
+*.hprof
+
+# Native build (auto-generated)
+.cxx/
+.externalNativeBuild/
+
+# Security
+*.jks
+*.keystore
+
+# Logs
+*.log

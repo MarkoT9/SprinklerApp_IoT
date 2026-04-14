@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Tlačidlo späť -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBack"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← Späť"
+                android:textColor="@color/accent_green"/>
+        </LinearLayout>
+
+        <!-- Hlavička obrazovky -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_sprinkler"
+                android:layout_marginEnd="12dp"
+                app:tint="@color/accent_green"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nastavenie WiFi"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+        </LinearLayout>
+
+        <!-- Názov zariadenia -->
+        <TextView
+            android:id="@+id/tvDeviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arduino Nano 33 IoT"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Karta so stavom Bluetooth spojenia -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STAV BLUETOOTH"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary"
+                    android:letterSpacing="0.12"
+                    android:layout_marginBottom="6dp"/>
+
+                <TextView
+                    android:id="@+id/tvConnectionStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pripájanie..."
+                    android:textSize="15sp"
+                    android:textColor="@color/accent_green"/>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    app:indicatorColor="@color/accent_green"
+                    app:trackColor="@color/divider_color"
+                    android:indeterminate="true"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Karta s prepínačom hotspotu telefónu.
+             Keď je zapnutý, preskočí sa overovanie WiFi credentials,
+             lebo telefón sa nemôže pripojiť na vlastný hotspot. -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOTSPOT"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary"
+                    android:letterSpacing="0.12"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Použiť tento telefón ako hotspot"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_primary"/>
+
+                        <!-- Nápoveda sa zobrazí len keď je prepínač zapnutý -->
+                        <TextView
+                            android:id="@+id/tvHotspotHint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Preskočí overenie WiFi — telefón sa nemôže pripojiť na vlastný hotspot"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_secondary"
+                            android:layout_marginTop="2dp"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchHotspot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        app:thumbTint="@color/accent_green"
+                        app:trackTint="@color/divider_color"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Karta so zadávaním WiFi prihlasovacích údajov -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WIFI PRIHLASOVACIE ÚDAJE"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_secondary"
+                    android:letterSpacing="0.12"
+                    android:layout_marginBottom="14dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Názov WiFi siete (SSID)"
+                    app:hintTextColor="@color/text_secondary"
+                    app:boxStrokeColor="@color/accent_green"
+                    app:boxBackgroundColor="@color/input_bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSsid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/text_primary"
+                        android:imeOptions="actionNext"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Heslo WiFi"
+                    app:hintTextColor="@color/text_secondary"
+                    app:boxStrokeColor="@color/accent_green"
+                    app:boxBackgroundColor="@color/input_bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/text_secondary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/text_primary"
+                        android:imeOptions="actionDone"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvProvisionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/accent_green"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Odoslať do Arduino"
+            android:textSize="16sp"
+            app:backgroundTint="@color/accent_green"
+            android:textColor="@color/bg_dark"
+            app:cornerRadius="12dp"
+            android:enabled="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vaše údaje sú odoslané priamo do Arduino cez Bluetooth a nikdy nie sú uložené ani odovzdané."
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

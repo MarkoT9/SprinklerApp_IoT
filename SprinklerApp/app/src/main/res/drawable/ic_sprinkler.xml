@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple water drop / sprinkler icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Water drop body -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,2 C12,2 5,10 5,14.5 C5,18.09 8.13,21 12,21 C15.87,21 19,18.09 19,14.5 C19,10 12,2 12,2 Z"/>
+    <!-- Highlight -->
+    <path
+        android:fillColor="#40FFFFFF"
+        android:pathData="M9,13 C8.5,13 8,12.5 8,12 C8,10.5 9.5,8.5 11,7 C10,9 9.5,11 9,13 Z"/>
+</vector>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:padding="20dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_sprinkler"
+            android:layout_marginEnd="12dp"
+            app:tint="@color/accent_green"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SprinklerApp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vyhľadať Arduino zariadenie"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Open Dashboard button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOpenDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Otvoriť panel"
+        android:textSize="16sp"
+        android:textColor="@color/accent_green"
+        app:cornerRadius="12dp"
+        android:layout_marginBottom="12dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/accent_green"/>
+
+    <!-- Scan button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:text="Hľadať zariadenie"
+        android:textColor="@color/bg_dark"
+        android:textSize="16sp"
+        app:backgroundTint="@color/accent_green"
+        app:cornerRadius="12dp" />
+
+    <!-- Progress indicator -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        app:indicatorColor="@color/accent_green"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Status text -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stlačte tlačidlo na spustenie vyhľadávania"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZARIADENIA V OKOLÍ"
+        android:textSize="11sp"
+        android:textColor="@color/text_secondary"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Device list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDevices"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"/>
+
+</LinearLayout>
