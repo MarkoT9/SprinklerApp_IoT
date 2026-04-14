@@ -1,5 +1,4 @@
-# SprinklerApp
-# Smart Sprinkler System (IoT Thesis)
+# IOT Technológie a mikrokontrolér Arduino
 
 SK Toto je moja záverečná bakalárska práca.
 EN This is my Bachelors degree final project.
