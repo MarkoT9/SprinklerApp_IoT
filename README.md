@@ -3,8 +3,6 @@
 SK Toto je moja záverečná bakalárska práca.
 EN This is my Bachelors degree final project.
 
-Komponent SprinklerIoT  
-
 # Setup  
 SK Na pridanie v SprinklerApp/gradle.properties  
 EN To add in SprinklerApp/gradle.properties  
