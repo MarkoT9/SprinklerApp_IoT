@@ -4,10 +4,6 @@ SK Toto je moja záverečná bakalárska práca.
 EN This is my Bachelors degree final project.
 
 Komponent SprinklerIoT  
-SK Komponent SprinklerIoT využíva nasledujúce Arduino knižnice:
-EN The SprinklerIoT component uses the following Arduino libraries:  
-
-
 
 # Setup  
 SK Na pridanie v SprinklerApp/gradle.properties  
